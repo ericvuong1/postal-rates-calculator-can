@@ -82,6 +82,7 @@ def calculate_weight_price():
             weight_input = float(input("Enter weight in kg: "))
             if weight_input <= 0 or weight_input > 10:
                 print("You didn't enter a non negative weight or you exceeded the weight limit, please try again")
+                continue
             return weight_input * cost_per_kg, weight_input
         except ValueError as e:
             print("You didn't enter a number, please try again")
@@ -100,8 +101,6 @@ def choose_post_type():
             return post_type, xpress_shipping_cost
         elif post_type == 'priority':
             return post_type, priority_shipping_cost
-
-
 
 
 print('For the starting postal code:')
@@ -128,7 +127,7 @@ print('The current cost is now: ' + str(cost_before_post_type))
 
 shipping_type, post_type_cost = choose_post_type()
 
-total_cost = cost_before_post_type + post_type_cost
+total_cost = "{0:.2f}".format(cost_before_post_type + post_type_cost)
 
 print('The shipping type is ' + shipping_type + ' and the total cost is ' + str(total_cost))
 
