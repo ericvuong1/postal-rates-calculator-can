@@ -1,7 +1,6 @@
 import sys
 import csv
 
-
 def main(argc, argv):
 
     if (argc < 7 or argc > 7):
@@ -18,3 +17,27 @@ def main(argc, argv):
 
     if argv[0] not in codes:
         display_text = "Error: not a valid canadian starting postal code."
+        return display_text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
