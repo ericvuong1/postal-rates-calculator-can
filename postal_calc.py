@@ -2,5 +2,18 @@
 
 import sys
 
-if (len(sys.argv) == 0):
-    print("Usage: ENTER")
+def main(argc, argv):
+
+    if (argc) == 0:
+        buffer = "ZERO ARGUMENT!!!"
+        print(buffer)
+        return buffer
+
+    if (argc) < 7:
+        buffer = "Usage: ENTER"
+        print(buffer)
+        return buffer
+
+
+
+#
