@@ -96,7 +96,7 @@ def main(argc, argv):
 
     #CALCULATE TOTAL POST RATE
     total_cost = "{0:.2f}".format(calcVolumePrice(length,width,height) + calcWeightPrice(weight) + calcPostTypePrice(post_type))
-
+    print(total_cost)
     return total_cost
 
 
@@ -121,7 +121,5 @@ def calcPostTypePrice(post_type):
     elif post_type == "Priority":
         return 15.00
 
-
-
-
-
+#This is to test or run the program
+main(7, ["h4k2g2", "v9g8r7", "132", "14", "25.1", "15.6", "Priority"])
