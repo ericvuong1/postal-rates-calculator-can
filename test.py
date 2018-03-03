@@ -30,9 +30,18 @@ def test_invalid_startcode():
     assert return_rate == "Error: not a valid canadian starting postal code."
 
 
+def test_invalid_destinationcode():
+    parameter_count = 7
+    parameters = ["h4k2g2", "654321", "1", "2", "3", "4", "Xpress"]
+    return_rate = postal_calc.main(parameter_count, parameters)
+    assert return_rate == "Error: not a valid canadian destination postal code."
 
 
-
+def test_invalid_length_format():
+    parameter_count = 7
+    parameters = ["h4k2g2", "v9g8r7", "abc", "2", "3", "4", "Xpress"]
+    return_rate = postal_calc.main(parameter_count, parameters)
+    assert return_rate == "Error: not a valid numerical length (cm)."
 
 
 

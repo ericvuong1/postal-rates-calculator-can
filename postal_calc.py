@@ -19,9 +19,17 @@ def main(argc, argv):
         display_text = "Error: not a valid canadian starting postal code."
         return display_text
 
+    if argv[1] not in codes:
+        display_text = "Error: not a valid canadian destination postal code."
+        return display_text
 
 
+    try:
+        length = float(argv[2])
 
+    except:
+        display_text = "Error: not a valid numerical length (cm)."
+        return display_text
 
 
 
