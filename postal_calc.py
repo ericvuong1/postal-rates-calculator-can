@@ -1,13 +1,15 @@
 import sys
 import csv
 
-
+#main method that will run the post rate calculator. argc is the parameters count and argv contains the parameters
 def main(argc, argv):
 
+    #CHECK CORRECT NUMBER OF ARGUMENTS
     if (argc < 7 or argc > 7):
         display_text = "Usage: starting_code ending_code length width height weight post_type"
-        return display_text
+        return display_text     #terminate with error display string
 
+    #CHECK VALID POSTAL CODES
     with open('postal-code-generator.csv') as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
         codes = []
@@ -24,6 +26,7 @@ def main(argc, argv):
         display_text = "Error: not a valid canadian destination postal code."
         return display_text
 
+    #CHECK VALID LENGTH
     try:
         length = float(argv[2])
     except:
@@ -38,6 +41,7 @@ def main(argc, argv):
         display_text = "Error: maximum length is 200cm."
         return display_text
 
+    #CHECK VALID WIDTH
     try:
         width = float(argv[3])
     except:
@@ -52,6 +56,7 @@ def main(argc, argv):
         display_text = "Error: maximum width is 200cm."
         return display_text
 
+    #CHECK VALID HEIGHT
     try:
         height = float(argv[4])
 
@@ -67,6 +72,7 @@ def main(argc, argv):
         display_text = "Error: maximum height is 200cm."
         return display_text
 
+    #CHECK VALID WEIGHT
     try:
         weight = float(argv[5])
     except:
@@ -81,27 +87,32 @@ def main(argc, argv):
         display_text = "Error: maximum weight is 30kg."
         return display_text
 
+    #CHECK VALID POST TYPE
     post_type = argv[6]
 
     if post_type != "Regular" and post_type != "Xpress" and post_type != "Priority":
         display_text = "Error: not a valid post type (Regular, Xpress or Priority) case sensitive."
         return display_text
 
+    #CALCULATE TOTAL POST RATE
     total_cost = "{0:.2f}".format(calcVolumePrice(length,width,height) + calcWeightPrice(weight) + calcPostTypePrice(post_type))
 
     return total_cost
 
 
+#function to calculate the volume price (assumed to be 5 dollars per meters cube)
 def calcVolumePrice(length, width, height):
     price = (0.01 * length * 0.01 * width * 0.01 * height) * 5
     return price
 
 
+#function to calculate the weight price (assumed to be 50 cents per kilogram)
 def calcWeightPrice(weight):
     price = 0.5 * weight
     return price
 
 
+#function to return the correct price of the post type (assumed to be 5 for regular, 10 for xpress, 15 for priority)
 def calcPostTypePrice(post_type):
     if post_type == "Regular":
         return 5.00
