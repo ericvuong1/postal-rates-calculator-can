@@ -7,6 +7,7 @@ def main(argc, argv):
     #CHECK CORRECT NUMBER OF ARGUMENTS
     if (argc < 7 or argc > 7):
         display_text = "Usage: starting_code ending_code length width height weight post_type"
+        print(display_text)
         return display_text     #terminate with error display string
 
     #CHECK VALID POSTAL CODES
@@ -18,80 +19,95 @@ def main(argc, argv):
             code = row[0]
             codes.append(code)
 
-    if argv[0] not in codes:
+    if argv[1] not in codes:
         display_text = "Error: not a valid canadian starting postal code."
+        print(display_text)
         return display_text
 
-    if argv[1] not in codes:
+    if argv[2] not in codes:
         display_text = "Error: not a valid canadian destination postal code."
+        print(display_text)
         return display_text
 
     #CHECK VALID LENGTH
     try:
-        length = float(argv[2])
+        length = float(argv[3])
     except:
         display_text = "Error: not a valid numerical length (cm)."
+        print(display_text)
         return display_text
 
     if length < 10:
         display_text = "Error: length must be at least 10cm."
+        print(display_text)
         return display_text
 
     if length > 200:
         display_text = "Error: maximum length is 200cm."
+        print(display_text)
         return display_text
 
     #CHECK VALID WIDTH
     try:
-        width = float(argv[3])
+        width = float(argv[4])
     except:
         display_text = "Error: not a valid numerical width (cm)."
+        print(display_text)
         return display_text
 
     if width < 10:
         display_text = "Error: width must be at least 10cm."
+        print(display_text)
         return display_text
 
     if width > 200:
         display_text = "Error: maximum width is 200cm."
+        print(display_text)
         return display_text
 
     #CHECK VALID HEIGHT
     try:
-        height = float(argv[4])
+        height = float(argv[5])
 
     except:
         display_text = "Error: not a valid numerical height (cm)."
+        print(display_text)
         return display_text
 
     if height < 10:
         display_text = "Error: height must be at least 10cm."
+        print(display_text)
         return display_text
 
     if height > 200:
         display_text = "Error: maximum height is 200cm."
+        print(display_text)
         return display_text
 
     #CHECK VALID WEIGHT
     try:
-        weight = float(argv[5])
+        weight = float(argv[6])
     except:
         display_text = "Error: not a valid numerical weight (kg)."
+        print(display_text)
         return display_text
 
     if weight < 0.1:
         display_text = "Error: minimum weight is 0.1kg."
+        print(display_text)
         return display_text
 
     if weight > 30:
         display_text = "Error: maximum weight is 30kg."
+        print(display_text)
         return display_text
 
     #CHECK VALID POST TYPE
-    post_type = argv[6]
+    post_type = argv[7]
 
     if post_type != "Regular" and post_type != "Xpress" and post_type != "Priority":
         display_text = "Error: not a valid post type (Regular, Xpress or Priority) case sensitive."
+        print(display_text)
         return display_text
 
     #CALCULATE TOTAL POST RATE
@@ -122,4 +138,4 @@ def calcPostTypePrice(post_type):
         return 15.00
 
 #This is to test or run the program
-main(7, ["h4k2g2", "v9g8r7", "132", "14", "25.1", "15.6", "Priority"])
+main(len(sys.argv) - 1, sys.argv)
