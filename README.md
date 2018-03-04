@@ -18,7 +18,7 @@ valid output:
 The total cost is: 15.50
 
 invalid input:
-./postal_calc.py h4k2g2 h4k2g2 100 100 100 1 Xpress dd
+./postal_calc.py h4k2g2 l3m0j2 100 100 100 1 Xpress dd
 
 invalid output:
 Usage: starting_code ending_code length width height weight post_type
