@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.6
+
 import sys
 import csv
 
@@ -112,7 +114,7 @@ def main(argc, argv):
 
     #CALCULATE TOTAL POST RATE
     total_cost = "{0:.2f}".format(calcVolumePrice(length,width,height) + calcWeightPrice(weight) + calcPostTypePrice(post_type))
-    print(total_cost)
+    print("The total cost is: " + total_cost)
     return total_cost
 
 
